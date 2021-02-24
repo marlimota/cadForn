@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+body {
+  background-color: #E3E3E3;
+  font-family: Raleway; 
+}
+
+.barraSuperior{
+    background-color: #C4C4C4;
+  }
+
+ .logo {
+  font-weight: bold;
+  font-family: Raleway, sans-serif;
+  color: black;
+  padding: 20px;
+ }
+
+ .outerInvisibleBox {
+  display: flex;
+  width: 90%;
+  max-width: 1280px;
+  height: auto;
+  flex-wrap: wrap;
+  margin: 5% auto;
+}
+
+.title {
+  width: 100%;
+  display: flex;
+}
+
+.botao-title {
+  display: flex;
+  width: 100%;
+  margin-bottom: 1%;
+  flex-direction: row-reverse;
+  color: black;
+  border: none;
+}
+
+.botao-title button {
+  background-color: white;
+  color: teal;
+  font-weight: bold;
+  width: 20%;
+}
+
+.botao-title button:hover{
+  color: white;
+  background-color: rgb(41, 165, 165);
+}
+
+ .innerWhiteBox {
+   display: flex;
+   width: 100%;
+   height: auto;
+   background-color: white;
+   border-radius: 10px;
+   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+ }
+
+ .colored-row {
+  background-color: rgba(180, 228, 228, 0.3);
+ }
+
+ .table {
+  width: 98%;
+  height: auto;
+  margin: 2%;
+  background-color: white;
+}
+
+ .table th{
+   width: 15%;
+ }
+
+ .table tr td{
+  vertical-align: middle;
+}
+
+  .innerWhiteBox input, textarea{
+    cursor: text;
+    border: none;
+    background-color: transparent !important;
+    outline: none;
+    width: 100%;
+  }
+
+
+  .botao {
+    display: flex;
+    width: 100%;
+    max-width: 1280px;
+    height: 10%;
+    max-height: 40px;
+    margin-top: 1%;
+    flex-direction: row-reverse;
+    color: black;
+    border: none;
+  }
+
+  .btn {
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    margin-left: 2%;
+    width: 15%;
+    min-width: 150px;
+  }
+
+  .btn:hover {
+    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  #confirm-btn {
+    background-color: #B0FFB8;
+  }
+
+  #confirm-btn:hover {
+    background-color: #77c47f;
+  }
+
+  #cancel-btn{
+    background-color: #FFB0B0;
+  }
+
+  #cancel-btn:hover {
+    background-color: #da8d8d;
+  }
+
+  #details-btn{
+    background-color: #B5E4E4;
+    box-shadow: none;
+  }
+
+  #details-btn:hover {
+    background-color: #B5E4E4;
+    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  #pageOverlay{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  #edit-box{
+    display: none;
+    max-width: 80%;
+    margin: auto;
+    margin-top: 10px;
+  }
+
+  input[type='submit'], button, [aria-label]{
+    cursor: pointer;
+  }
+
+ 

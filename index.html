@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <meta charset="UTF-8">
+  <title>CadForn</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+  <nav class="barraSuperior">
+    <div class="logo">
+      <h1>CadForn</h1>
+      <h4>Cadastro de fornecedores</h4>
+    </div>
+  </nav>
+
+  <div class="outerInvisibleBox">
+    <section class="title">
+      <h2>Fornecedores</h2>
+      <div class="botao-title">
+        <button class="btn"><i class="fa fa-search"></i> Buscar</button>
+        <button class="btn" onclick="ShowNewProviderOverlay()"><i class="fa fa-plus"></i> Adicionar novo</button>
+      </div>
+    </section>
+    <section class="innerWhiteBox">
+      <table class="table" class="table table-success table-striped">
+        <thead>
+          <tr class="fornecedores">
+            <th>Nome Fantasia</th>
+            <th>Razão Social</th>
+            <th>CNPJ</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="fornecedoresBody">
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <div id="edit-box" role="aria-hidden">
+    <form action="javascript:void(0);" method="POST" id="save-edit">
+
+      <input type="text" id="edit_nomeFantasia" placeholder="Nome Fantasia">
+      <input type="text" id="edit_razaoSocial" placeholder="Razão Social">
+      <input type="text" id="edit_cnpj" placeholder="CNPJ">
+      <input type="tel" id="edit_telefone" placeholder="Telefone">
+      <input type="tel" id="edit_celular" placeholder="Celular">
+      <input type="text" id="edit_endereco" placeholder="Endereço">
+      <input type="email" id="edit_email" placeholder="E-mail">
+      <input type="text" id="edit_site" placeholder="Site">
+      <input type="text" id="edit_produto" placeholder="Produto">
+      <input type="text" id="edit_contrato" placeholder="contrato">
+      <textarea name="observacao" id="edit_observacao" cols="30" rows="3" placeholder="Observação"></textarea>
+
+      <section class="botao">
+        <Button onclick="HideNewProviderOverlay()" class="btn" id="cancel-btn"><i class="fa fa-trash"></i>
+          Fechar</Button>
+        <Button onclick="app.AddProvider()" class="btn" id="confirm-btn"><i class="fa fa-check"></i> Editar</Button>
+      </section>
+    </form>
+  </div>
+
+  <section id="pageOverlay">
+    <section class="outerInvisibleBox">
+      <section class="innerWhiteBox">
+        <table class="table" class="table table-success table-striped">
+          <tbody>
+            <tr class="colored-row">
+              <th scope="row">Nome Fantasia</th>
+              <td><input type="text" autocomplete="off" autocapitalize="off" id="nomeFantasia"
+                  placeholder="Nome Fantasia"></td>
+            </tr>
+            <tr>
+              <th scope="row">Razão Social</th>
+              <td><input type="text" autocomplete="off" autocapitalize="off" id="razaoSocial"
+                  placeholder="Razão Social">
+              </td>
+            </tr>
+            <tr class="colored-row">
+              <th scope="row">CNPJ</th>
+              <td><input type="text" autocomplete="off" autocapitalize="off" id="cnpj" class="ls-mask-cnpj"
+                  placeholder="00.000.000/0000-00"></td>
+            </tr>
+            <tr>
+              <th scope="row">Telefone</th>
+              <td><input type="text" autocomplete="off" autocapitalize="off" id="telefone"
+                  class="form-control phone-mask" placeholder="0000-0000">
+              </td>
+            </tr>
+            <tr class="colored-row">
+              <th scope="row">Celular</th>
+              <td><input type="text" autocomplete="off" autocapitalize="off" id="celular"
+                  class="form-control phone-ddd-mask" placeholder="(00) 0000-0000"></td>
+            </tr>
+            <tr>
+              <th scope="row">Endereço</th>
+              <td><input type="text" autocomplete="off" autocapitalize="off" id="endereco" placeholder="Endereço">
+              </td>
+            </tr>
+            <tr class="colored-row">
+              <th scope="row">Email</th>
+              <td><input type="text" autocomplete="off" autocapitalize="off" id="email" placeholder="Email"></td>
+            </tr>
+            <tr>
+              <th scope="row">Site</th>
+              <td><input type="text" autocomplete="off" autocapitalize="off" id="site" placeholder="Site">
+              </td>
+            </tr>
+            <tr class="colored-row">
+              <th scope="row">Produto</th>
+              <td><input type="text" autocomplete="off" autocapitalize="off" id="produto" placeholder="Produto"></td>
+            </tr>
+            <tr>
+              <th scope="row">Contrato</th>
+              <td><input type="text" autocomplete="off" autocapitalize="off" id="contrato" placeholder="Contrato">
+              </td>
+            </tr>
+            <tr class="colored-row">
+              <th scope="row">Observação</th>
+              <td><textarea name="observacao" id="observacao" placeholder="Observação"></textarea>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="botao">
+        <Button onclick="HideNewProviderOverlay()" class="btn" id="cancel-btn"><i class="fa fa-trash"></i>
+          Descartar</Button>
+        <Button onclick="app.AddProvider()" class="btn" id="confirm-btn"><i class="fa fa-check"></i> Salvar</Button>
+      </section>
+    </section>
+  </section>
+
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
