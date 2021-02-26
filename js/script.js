@@ -19,7 +19,7 @@ var app = new function () {
 
   this.fornecedoresList = [];
 
-  this.itemsByPage = 5;
+  this.itemsByPage = 4;
   this.pageNumber = 0;
 
 
@@ -43,9 +43,9 @@ var app = new function () {
         data += '<td style="width:9%">' + this.fornecedoresList[this.pageNumber * this.itemsByPage + i].razaoSocial + '</td>';
         data += '<td style="width:9%">' + this.fornecedoresList[this.pageNumber * this.itemsByPage + i].cnpj + '</td>';
         data += '<td style="width:9%">' + this.fornecedoresList[this.pageNumber * this.itemsByPage + i].telefone + '</td>';
-        data += '<td style="width:9%"> <Button onclick="app.Details(' + (this.pageNumber * this.itemsByPage) + i + ')"  class="btn" id="details-btn"><i class="fa fa-ellipsis-h"></i> Detalhes</Button> </td>';
-        data += '<td style="width:9%"> <Button onclick="app.Edit(' + (this.pageNumber * this.itemsByPage) + i + ')"  class="btn" id="edit-btn"><i class="fa fa-edit"></i> Editar</Button> </td>';
-        data += '<td style="width:9%"> <button onclick="app.Delete(' + (this.pageNumber * this.itemsByPage) + i + ')" class="btn-delete"><i class="fa fa-times"></i></button> </td>';
+        data += '<td style="width:9%"> <Button onclick="app.Details(' + ((this.pageNumber * this.itemsByPage) + i) + ')"  class="btn" id="details-btn"><i class="fa fa-ellipsis-h"></i> Detalhes</Button> </td>';
+        data += '<td style="width:9%"> <Button onclick="app.Edit(' + ((this.pageNumber * this.itemsByPage) + i) + ')"  class="btn" id="edit-btn"><i class="fa fa-edit"></i> Editar</Button> </td>';
+        data += '<td style="width:9%"> <button onclick="app.Delete(' + ((this.pageNumber * this.itemsByPage) + i) + ')" class="btn-delete"><i class="fa fa-times"></i></button> </td>';
         data += '</tr>';
       }
     }
@@ -293,5 +293,15 @@ function isFornecedorValid(fornecedor) {
   }
 
   return true;
+
+}
+
+function ChangePage(changeBy) {
+  if (app.pageNumber + changeBy >= 0
+    && app.pageNumber + changeBy < Math.ceil(app.fornecedoresList.length / app.itemsByPage)) {
+    app.pageNumber += changeBy;
+    app.FetchAll();
+  }
+
 
 }

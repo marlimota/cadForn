@@ -19,7 +19,7 @@ body {
  .outerInvisibleBox {
   display: flex;
   width: 90%;
-  max-width: 1280px;
+  max-width: 90%;
   height: auto;
   flex-wrap: wrap;
   margin: 5% auto;
@@ -78,7 +78,7 @@ body {
 
  .table tr td{
   vertical-align: middle;
-  max-width: 15% !important;
+  max-width: 50px !important;
 }
 
 .innerWhiteBox input, textarea{
@@ -88,7 +88,6 @@ body {
     outline: none;
     width: 100%;
 }
-
 
   .botao {
     display: flex;
@@ -144,6 +143,20 @@ body {
     box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
+  .arrows {
+    width: 100%;
+    display: flex;
+    margin: 1%;
+    justify-content: flex-end;
+  }
+
+  .arrows i {
+    padding: 10px;
+  }
+
+  .arrows a {
+    cursor: pointer;
+  }
 
   #details-btn{
     background-color: #B5E4E4;
