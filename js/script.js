@@ -219,7 +219,7 @@ var app = new function () {
     ""
   );
 
-  //this.fornecedoresList.push(initialProvider);
+  this.fornecedoresList.push(initialProvider);
 
 };
 
