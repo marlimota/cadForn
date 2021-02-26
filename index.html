@@ -111,18 +111,22 @@
       </section>
 
       <section class="botao" id="newFornecedor">
-        <Button onclick="HideNewProviderOverlay()" class="btn" id="cancel-btn"><i class="fa fa-trash"></i>
+        <Button onclick="HideNewProviderOverlay()" class="btn cancel" id="newFornecedor-cancel-btn"><i
+            class="fa fa-trash"></i>
           Descartar</Button>
-        <Button onclick="app.AddProvider()" class="btn" id="confirm-btn"><i class="fa fa-check"></i> Salvar</Button>
+        <Button onclick="app.AddProvider()" class="btn confirm" id="newFornecedor-confirm-btn"><i
+            class="fa fa-check"></i>
+          Salvar</Button>
       </section>
       <section class="botao" id="details">
-        <Button onclick="HideNewProviderOverlay()" class="btn" id="cancel-btn"><i class="fa fa-times"></i>
+        <Button onclick="HideNewProviderOverlay()" class="btn cancel" id="details-cancel-btn"><i
+            class="fa fa-times"></i>
           Fechar</Button>
       </section>
       <section class="botao" id="edit">
-        <Button onclick="HideNewProviderOverlay()" class="btn" id="cancel-btn"><i class="fa fa-times"></i>
+        <Button onclick="HideNewProviderOverlay()" class="btn cancel" id="edit-cancel-btn"><i class="fa fa-times"></i>
           Cancelar</Button>
-        <Button onclick="app.SaveEditedFornecedor()" class="btn" id="confirm-btn"><i class="fa fa-check"></i>
+        <Button class="btn confirm" id="edit-confirm-btn"><i class="fa fa-check"></i>
           Salvar</Button>
       </section>
     </section>

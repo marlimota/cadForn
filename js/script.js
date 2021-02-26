@@ -19,25 +19,33 @@ var app = new function () {
 
   this.fornecedoresList = [];
 
+  this.itemsByPage = 5;
+  this.pageNumber = 0;
+
 
   this.FetchAll = function () {
     var data = '';
 
     if (this.fornecedoresList.length > 0) {
-      for (i = 0; i < this.fornecedoresList.length; i++) {
+      for (i = 0; i < this.itemsByPage; i++) {
+
+        if (this.fornecedoresList.length <= this.pageNumber * this.itemsByPage + i) {
+          return this.FornecedoresTable.innerHTML = data;
+        }
+
         if (i % 2 == 0) {
           data += '<tr class="colored-row">';
         }
         else {
           data += '<tr>';
         }
-        data += '<td style="width:9%">' + this.fornecedoresList[i].nomeFantasia + '</td>';
-        data += '<td style="width:9%">' + this.fornecedoresList[i].razaoSocial + '</td>';
-        data += '<td style="width:9%">' + this.fornecedoresList[i].cnpj + '</td>';
-        data += '<td style="width:9%">' + this.fornecedoresList[i].telefone + '</td>';
-        data += '<td style="width:9%"> <Button onclick="app.Details(' + i + ')"  class="btn" id="details-btn"><i class="fa fa-ellipsis-h"></i> Detalhes</Button> </td>';
-        data += '<td style="width:9%"> <Button onclick="app.Edit(' + i + ')"  class="btn" id="edit-btn"><i class="fa fa-edit"></i> Editar</Button> </td>';
-        data += '<td style="width:9%"> <button onclick="app.Delete(' + i + ')" class="btn-delete"><i class="fa fa-times"></i></button> </td>';
+        data += '<td style="width:9%">' + this.fornecedoresList[this.pageNumber * this.itemsByPage + i].nomeFantasia + '</td>';
+        data += '<td style="width:9%">' + this.fornecedoresList[this.pageNumber * this.itemsByPage + i].razaoSocial + '</td>';
+        data += '<td style="width:9%">' + this.fornecedoresList[this.pageNumber * this.itemsByPage + i].cnpj + '</td>';
+        data += '<td style="width:9%">' + this.fornecedoresList[this.pageNumber * this.itemsByPage + i].telefone + '</td>';
+        data += '<td style="width:9%"> <Button onclick="app.Details(' + (this.pageNumber * this.itemsByPage) + i + ')"  class="btn" id="details-btn"><i class="fa fa-ellipsis-h"></i> Detalhes</Button> </td>';
+        data += '<td style="width:9%"> <Button onclick="app.Edit(' + (this.pageNumber * this.itemsByPage) + i + ')"  class="btn" id="edit-btn"><i class="fa fa-edit"></i> Editar</Button> </td>';
+        data += '<td style="width:9%"> <button onclick="app.Delete(' + (this.pageNumber * this.itemsByPage) + i + ')" class="btn-delete"><i class="fa fa-times"></i></button> </td>';
         data += '</tr>';
       }
     }
@@ -125,6 +133,8 @@ var app = new function () {
       document.getElementById('observacao').value
     );
 
+
+
     //Caso todas as informações sejam válidas atualiza a lista de fornecedores e esconde os campos de edição
     if (isFornecedorValid(fornecedor)) {
       // Edit value
@@ -144,6 +154,7 @@ var app = new function () {
 
     document.getElementById("newFornecedor").style.display = "none";
     document.getElementById("edit").style.display = "flex";
+    document.getElementById("edit-confirm-btn").setAttribute("onClick", "javascript: app.SaveEditedFornecedor(" + item + ");");
     document.getElementById("details").style.display = "none";
   }
 
@@ -208,7 +219,8 @@ var app = new function () {
     ""
   );
 
-  this.fornecedoresList.push(initialProvider);
+  //this.fornecedoresList.push(initialProvider);
+
 };
 
 
@@ -223,6 +235,21 @@ this.ShowNewProviderOverlay = function () {
 
 this.HideNewProviderOverlay = function () {
   document.getElementById("pageOverlay").style.display = "none";
+
+  document.getElementById('nomeFantasia').value = "";
+  document.getElementById('razaoSocial').value = "";
+  document.getElementById('cnpj').value = "";
+  document.getElementById('telefone').value = "";
+  document.getElementById('celular').value = "";
+  document.getElementById('endereco').value = "";
+  document.getElementById('email').value = "";
+  document.getElementById('site').value = "";
+  document.getElementById('produto').value = "";
+  document.getElementById('contrato').value = "";
+  document.getElementById('observacao').value = "";
+
+  app.SetReadOnly(false);
+
 }
 
 function CloseInput() {

@@ -69,6 +69,7 @@ body {
   height: auto;
   margin: 2%;
   background-color: white;
+  word-wrap: break-word !important;
 }
 
  .table th{
@@ -77,16 +78,16 @@ body {
 
  .table tr td{
   vertical-align: middle;
-  max-width: 15%;
+  max-width: 15% !important;
 }
 
-  .innerWhiteBox input, textarea{
+.innerWhiteBox input, textarea{
     cursor: text;
     border: none;
     background-color: transparent !important;
     outline: none;
     width: 100%;
-  }
+}
 
 
   .botao {
@@ -99,6 +100,22 @@ body {
     flex-direction: row-reverse;
     color: black;
     border: none;
+  }
+
+  .btn.confirm {
+    background-color: #B0FFB8;
+  }
+
+  .btn.confirm:hover {
+    background-color: #77c47f;
+  }
+
+  .btn.cancel{
+    background-color: #FFB0B0;
+  }
+
+  .btn.cancel:hover {
+    background-color: #da8d8d;
   }
 
   .btn {
@@ -116,7 +133,6 @@ body {
   .btn-delete {
     border-radius: 50%;
     margin-left: 20%; 
-    height: 100%;
     min-height: 40px;
     min-width: 40px;
     background-color: #ff416a;
@@ -128,21 +144,6 @@ body {
     box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
-  #confirm-btn {
-    background-color: #B0FFB8;
-  }
-
-  #confirm-btn:hover {
-    background-color: #77c47f;
-  }
-
-  #cancel-btn{
-    background-color: #FFB0B0;
-  }
-
-  #cancel-btn:hover {
-    background-color: #da8d8d;
-  }
 
   #details-btn{
     background-color: #B5E4E4;
