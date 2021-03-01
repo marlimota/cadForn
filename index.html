@@ -58,7 +58,7 @@
 
   <div id="pageOverlay">
     <div class="cadastro">
-      <section class="providers">
+      <section class="providers" id="overlayWhiteBox">
         <table class="table table-striped">
           <tr>
             <th>Nome Fantasia</th>
@@ -118,6 +118,7 @@
       <section class="buttonBoxes" id="detailsButtonBox">
         <Button onclick="SetPageOverlayVisibility(false)" class="btn cancel" id="details-cancel-btn"><i
             class="fa fa-times"></i> Fechar</Button>
+        <button onclick="Print()" class="btn confirm"><i class="fa fa-print"></i> Imprimir</button>
       </section>
       <section class="buttonBoxes" id="editButtonBox">
         <Button onclick="SetPageOverlayVisibility (false)" class="btn cancel" id="edit-cancel-btn"><i

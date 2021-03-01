@@ -51,6 +51,7 @@ function SetPageOverlayVisibility(visible) {
     document.getElementById('addProviderButtonBox').style.display = "none";
     document.getElementById('detailsButtonBox').style.display = "none";
     document.getElementById('editButtonBox').style.display = "none";
+    SetReadOnly(false);
   }
 }
 
@@ -268,4 +269,11 @@ SetReadOnly = function (value) {
   document.getElementById("produto").readOnly = value;
   document.getElementById("contrato").readOnly = value;
   document.getElementById("observacao").readOnly = value;
+}
+
+//função imprimir detalhes
+function Print() {
+  document.getElementById("detailsButtonBox").style.display = "none";
+  window.print();
+  document.getElementById("detailsButtonBox").style.display = "flex";
 }
