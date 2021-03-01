@@ -217,7 +217,7 @@ function ShowOverlay(providerIndex) {
 }
 
 SaveEditedFornecedor = function (providerIndex) {
-  if (!window.confirm("Atenção! Isso vai alterar os dados do fornecedor. Deseja continuar?")) {
+  if (!window.confirm("Atenção! Isso pode alterar os dados do fornecedor. Deseja continuar?")) {
     return;
   }
 
