@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CadForn</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
@@ -15,127 +16,118 @@
 <body>
 
   <nav class="barraSuperior">
-    <div class="logo">
+    <div class="barraSuperiorLogo">
       <h1>CadForn</h1>
-      <h4>Cadastro de fornecedores</h4>
+      <h4>Cadastro de Fornecedores</h4>
     </div>
   </nav>
 
-  <div class="outerInvisibleBox">
+  <div class="cadastro">
     <section class="title">
       <h2>Fornecedores</h2>
-      <div class="botao-title">
-        <button class="btn" onclick="ShowNewProviderOverlay()"><i class="fa fa-plus"></i> Adicionar novo</button>
+      <div class="titleButton">
+        <button class="btn" onclick="SetNewProviderScreenVisibility(true)"><i class="fa fa-plus"></i> Adicionar</button>
       </div>
     </section>
-    <section class="innerWhiteBox">
-      <table class="table">
-        <thead>
-          <tr class="fornecedores">
-            <th>Nome Fantasia</th>
-            <th>Razão Social</th>
-            <th>CNPJ</th>
-            <th>Telefone</th>
-            <th>Ações</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="fornecedoresBody">
-        </tbody>
-      </table>
+    <section class="providers">
+      <div>
+        <table class="table table-striped">
+          <thead class="table-title">
+            <tr>
+              <th>Nome Fantasia</th>
+              <th>Razão Social</th>
+              <th>CNPJ</th>
+              <th>Telefone</th>
+              <th>Ações</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="providersTable">
+          </tbody>
+        </table>
+      </div>
     </section>
     <section class="arrows">
+      <div id="numberPage"></div>
       <a id="previewButton" onclick="ChangePage(-1)"><i class="fa fa-chevron-left"></i></a>
       <a id="nextButton" onclick="ChangePage(1)"><i class="fa fa-chevron-right"></i></a>
     </section>
   </div>
 
-  <section id="pageOverlay">
-    <section class="outerInvisibleBox">
-      <section class="innerWhiteBox">
-        <table class="table" class="table table-success table-striped">
-          <tbody>
-            <tr class="colored-row">
-              <th scope="row">Nome Fantasia</th>
-              <td><input type="text" autocomplete="off" autocapitalize="off" id="nomeFantasia"
-                  placeholder="Nome Fantasia"></td>
-            </tr>
-            <tr>
-              <th scope="row">Razão Social</th>
-              <td><input type="text" autocomplete="off" autocapitalize="off" id="razaoSocial"
-                  placeholder="Razão Social">
-              </td>
-            </tr>
-            <tr class="colored-row">
-              <th scope="row">CNPJ</th>
-              <td><input type="text" autocomplete="off" autocapitalize="off" id="cnpj" class="ls-mask-cnpj"
-                  placeholder="00.000.000/0000-00"></td>
-            </tr>
-            <tr>
-              <th scope="row">Telefone</th>
-              <td><input type="text" autocomplete="off" autocapitalize="off" id="telefone" placeholder="0000-0000">
-              </td>
-            </tr>
-            <tr class="colored-row">
-              <th scope="row">Celular</th>
-              <td><input type="text" autocomplete="off" autocapitalize="off" id="celular" placeholder="(00) 0000-0000">
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Endereço</th>
-              <td><input type="text" autocomplete="off" autocapitalize="off" id="endereco" placeholder="Endereço">
-              </td>
-            </tr>
-            <tr class="colored-row">
-              <th scope="row">Email</th>
-              <td><input type="text" autocomplete="off" autocapitalize="off" id="email" placeholder="Email"></td>
-            </tr>
-            <tr>
-              <th scope="row">Site</th>
-              <td><input type="text" autocomplete="off" autocapitalize="off" id="site" placeholder="Site">
-              </td>
-            </tr>
-            <tr class="colored-row">
-              <th scope="row">Produto</th>
-              <td><input type="text" autocomplete="off" autocapitalize="off" id="produto" placeholder="Produto"></td>
-            </tr>
-            <tr>
-              <th scope="row">Contrato</th>
-              <td><input type="text" autocomplete="off" autocapitalize="off" id="contrato" placeholder="Contrato">
-              </td>
-            </tr>
-            <tr class="colored-row">
-              <th scope="row">Observação</th>
-              <td><textarea name="observacao" id="observacao" placeholder="Observação"></textarea>
-              </td>
-            </tr>
-          </tbody>
+
+  <div id="pageOverlay">
+    <div class="cadastro">
+      <section class="providers">
+        <table class="table table-striped">
+          <tr>
+            <th>Nome Fantasia</th>
+            <td> <input type="text" name="nomeFantasia" id="nomeFantasia" placeholder="Nome Fantasia"></td>
+          </tr>
+          <tr>
+            <th>Razão Social</th>
+            <td> <input type="text" name="razaoSocial" id="razaoSocial" placeholder="Razão Social"></td>
+          </tr>
+          <tr>
+            <th>CNPJ</th>
+            <td> <input type="text" name="cnpj" id="cnpj" placeholder="CNPJ"></td>
+          </tr>
+          <tr>
+            <th>Telefone</th>
+            <td> <input type="tel" name="telefone" id="telefone" placeholder="Telefone"></td>
+          </tr>
+          <tr>
+            <th>Celular</th>
+            <td> <input type="tel" name="celular" id="celular" placeholder="Celular"></td>
+          </tr>
+          <tr>
+            <th>Endereço</th>
+            <td> <input type="text" name="endereco" id="endereco" placeholder="Endereço"></td>
+          </tr>
+          <tr>
+            <th>E-mail</th>
+            <td> <input type="email" name="email" id="email" placeholder="E-mail"></td>
+          </tr>
+          <tr>
+            <th>Site</th>
+            <td> <input type="text" name="site" id="site" placeholder="Site"></td>
+          </tr>
+          <tr>
+            <th>Produto</th>
+            <td> <input type="text" name="produto" id="produto" placeholder="Produto"></td>
+          </tr>
+          <tr>
+            <th>Contrato</th>
+            <td> <input type="text" name="contrato" id="contrato" placeholder="Contrato"></td>
+          </tr>
+          <tr>
+            <th>Observação</th>
+            <td> <textarea type="text" name="observacao" id="observacao" placeholder="Observação"> </textarea> </td>
+          </tr>
         </table>
       </section>
 
-      <section class="botao" id="newFornecedor">
-        <Button onclick="HideNewProviderOverlay()" class="btn cancel" id="newFornecedor-cancel-btn"><i
+      <!--botões-->
+      <section class="buttonBoxes" id="addProviderButtonBox">
+        <Button onclick="SetPageOverlayVisibility (false)" class="btn cancel" id="newprovider-cancel-btn"><i
             class="fa fa-trash"></i>
           Descartar</Button>
-        <Button onclick="app.AddProvider()" class="btn confirm" id="newFornecedor-confirm-btn"><i
-            class="fa fa-check"></i>
+        <Button onclick="SaveNewProvider()" class="btn confirm" id="newprovider-confirm-btn"><i class="fa fa-check"></i>
           Salvar</Button>
       </section>
-      <section class="botao" id="details">
-        <Button onclick="HideNewProviderOverlay()" class="btn cancel" id="details-cancel-btn"><i
-            class="fa fa-times"></i>
-          Fechar</Button>
+      <section class="buttonBoxes" id="detailsButtonBox">
+        <Button onclick="SetPageOverlayVisibility(false)" class="btn cancel" id="details-cancel-btn"><i
+            class="fa fa-times"></i> Fechar</Button>
       </section>
-      <section class="botao" id="edit">
-        <Button onclick="HideNewProviderOverlay()" class="btn cancel" id="edit-cancel-btn"><i class="fa fa-times"></i>
+      <section class="buttonBoxes" id="editButtonBox">
+        <Button onclick="SetPageOverlayVisibility (false)" class="btn cancel" id="edit-cancel-btn"><i
+            class="fa fa-times"></i>
           Cancelar</Button>
         <Button class="btn confirm" id="edit-confirm-btn"><i class="fa fa-check"></i>
           Salvar</Button>
       </section>
-    </section>
-  </section>
-
+    </div>
+  </div>
 
   <script src="js/script.js"></script>
 </body>

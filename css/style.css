@@ -1,22 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 body {
-  background-color: #ccc9c9;
+  background-color: #c8c8c8;
   font-family: Raleway; 
 }
 
-.barraSuperior{
-  background-image: linear-gradient(135deg, rgb(75, 73, 74) , rgb(184, 182, 182));
+.barraSuperior {
+  background-image: linear-gradient(135deg, rgb(63, 63, 63),gray);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
- .logo {
+.barraSuperiorLogo {
   font-weight: bolder;
   font-family: Raleway, sans-serif;
-  color: white;
+  color:white;
   padding: 20px;
- }
+}
 
- .outerInvisibleBox {
+.cadastro {
+  margin-top: 2%;
   display: flex;
   width: 90%;
   max-width: 90%;
@@ -28,49 +30,32 @@ body {
 .title {
   width: 100%;
   display: flex;
-  font-weight: bolder;
+  justify-content: space-between;
 }
 
-.botao-title {
-  display: flex;
-  width: 100%;
-  margin-bottom: 1%;
-  flex-direction: row-reverse;
-  color: black;
-  border: none;
-}
-
-.botao-title button {
-  background-color: white;
-  color: teal;
+.title h2 {
   font-weight: bold;
-  width: 20%;
 }
 
-.botao-title button:hover{
-  color: white;
-  background-color: rgb(41, 165, 165);
-}
-
- .innerWhiteBox {
-   display: flex;
-   width: 100%;
-   height: auto;
-   background-color: white;
-   border-radius: 10px;
-   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
- }
-
- .colored-row {
-  background-color: rgba(180, 228, 228, 0.3);
- }
-
- .table {
+/*Tabelas*/
+.providers {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   width: 100%;
+  height: 50%;
+}
+
+/*conteudo das tabelas*/
+.table {
+  width: 96%;
   height: auto;
   margin: 2%;
   background-color: white;
   word-wrap: break-word !important;
+  justify-content: center;
 }
 
  .table th{
@@ -82,7 +67,7 @@ body {
   max-width: 50px !important;
 }
 
-.innerWhiteBox input, textarea{
+.table input, textarea{
     cursor: text;
     border: none;
     background-color: transparent !important;
@@ -90,129 +75,148 @@ body {
     width: 100%;
 }
 
-  .botao {
-    display: flex;
-    width: 100%;
-    max-width: 1280px;
-    height: 10%;
-    max-height: 40px;
-    margin-top: 2%;
-    flex-direction: row-reverse;
-    color: black;
-    border: none;
-  }
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color:  rgba(180, 228, 228, 0.3); 
+ }
 
-  .btn.confirm {
-    background-color: #B0FFB8;
-  }
+ /*setas para mudança de página*/
+ .arrows {
+  width: 100%;
+  display: flex;
+  margin: 1%;
+  justify-content: flex-end;
+}
 
-  .btn.confirm:hover {
-    background-color: #77c47f;
-  }
+.arrows i {
+  padding: 10px;
+}
 
-  .btn.cancel{
-    background-color: #FFB0B0;
-  }
+.arrows a {
+  cursor: pointer;
+}
 
-  .btn.cancel:hover {
-    background-color: #da8d8d;
-  }
+/*botoes*/
 
-  .btn {
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 30px;
-    margin-left: 2%;
-    width: 10%;
-    min-width: 150px;
-  }
+/*botão adicinar novo*/
+.btn {
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+}
 
-  .btn:hover {
-    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
-  }
+.btn:hover {
+  box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-  .btn-delete {
-    border-radius: 50%;
-    margin-left: 20%; 
-    min-height: 40px;
-    min-width: 40px;
-    background-color: #ff416a;
-    border: none;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-  }
+.titleButton button {
+  background-color: white;
+  color: teal;
+  font-weight: bold;
+}
 
-  .btn-delete:hover {
-    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
-  }
+.titleButton button:hover {
+  background-color: rgb(43, 170, 170);
+  color: white;
+}
 
-  .arrows {
-    width: 100%;
-    display: flex;
-    margin: 1%;
-    justify-content: flex-end;
-  }
+/*botoes de confirmar e cancelar*/
+.buttonBoxes {
+  display: flex;
+  display: none;
+  width: 100%;
+  max-width: 1280px;
+  height: 10%;
+  max-height: 40px;
+  margin-top: 2%;
+  flex-direction: row-reverse;
+  color: black;
+  border: none;
+}
 
-  .arrows i {
-    padding: 10px;
-  }
+.btn.confirm {
+  background-color: #B0FFB8;
+}
 
-  .arrows a {
-    cursor: pointer;
-  }
+.btn.confirm:hover {
+  background-color: #77c47f;
+}
 
-  #details-btn{
-    background-color: #B5E4E4;
-    box-shadow: none;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-  }
+.btn.cancel{
+  background-color: #FFB0B0;
+}
 
-  #details-btn:hover {
-    background-color: #B5E4E4;
-    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
-  }
+.btn.cancel:hover {
+  background-color: #da8d8d;
+}
 
-  #edit-btn {
-    background-color: #b5d1e4;
-    box-shadow: none;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-  }
+.btn {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  margin-left: 2%;
+  width: 10%;
+  min-width: 150px;
+}
 
-  #edit-btn:hover {
-    background-color: #b5d1e4;
-    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
-  }
+.btn:hover {
+  box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-  #pageOverlay{
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    min-height: 100%;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.25);
-  }
+.btn-delete {
+  border-radius: 50%;
+  margin-left: 20%; 
+  min-height: 40px;
+  min-width: 40px;
+  background-color: #ff416a;
+  border: none;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-  #edit-box{
-    display: none;
-    max-width: 80%;
-    margin: auto;
-    margin-top: 10px;
-  }
+.btn-delete:hover {
+  box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-  #newFornecedor {
-    display: none;
-  }
+#pageOverlay {
+  display: none;
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.25);
+}
 
-  #details {
-    display: none;
-  }
+#details-btn{
+  background-color: #B5E4E4;
+  box-shadow: none;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-  #edit {
-    display: none;
-  }
+#details-btn:hover {
+  background-color: #B5E4E4;
+  box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-  input[type='submit'], button, [aria-label]{
-    cursor: pointer;
-  }
+#edit-btn {
+  background-color: #b5d1e4;
+  box-shadow: none;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#edit-btn:hover {
+  background-color: #b5d1e4;
+  box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#numberPage {
+  font-weight: bold;
+  padding: 5px;
+}
+
+
+
+
+
 
