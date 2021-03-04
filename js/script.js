@@ -12,13 +12,13 @@ let defaultProvider = new Provider(
   "Marli",
   "Mota",
   "00.000.000/0000-00",
-  "(00) 0000-0000",
+  "(00)0000-0000",
   "(00)00000-0000",
   "Rua das ruas, 99 - São paulo SP",
   "marli@mota.com",
   "www.marli.com.br",
   "Softwares",
-  "00000000-1"
+  "000000.0000-01"
 );
 
 
