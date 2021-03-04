@@ -300,3 +300,4 @@ $(document).ready(function () {
 $(document).ready(function () {
   $("#contrato").mask("999999.9999-99");
 });
+
