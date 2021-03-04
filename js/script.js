@@ -76,6 +76,7 @@ function Provider(nomeFantasia, razaoSocial, cnpj, telefone, celular, endereco, 
   this.contrato = contrato;
   this.observacao = observacao;
 
+  //função para validação dos campos do formulário
   this.IsValid = function () {
     if (this.nomeFantasia.length < 3) {
       alert("O nome deve ter pelo menos 3 caracteres!");
@@ -101,12 +102,17 @@ function Provider(nomeFantasia, razaoSocial, cnpj, telefone, celular, endereco, 
       return false;
     }
 
+    if (this.email === "") {
+      alert("Você deve digitar um e-mail válido!");
+      return false;
+    }
+
     if (this.produto === "") {
       alert("Você deve digitar um produto!");
       return false;
     }
 
-    if (this.contrato.length < 7) {
+    if (this.contrato.length < "") {
       alert("Você deve digitar o número do contrato completo!");
       return false;
     }
@@ -277,3 +283,20 @@ function Print() {
   window.print();
   document.getElementById("detailsButtonBox").style.display = "flex";
 }
+
+//mascara jquery para preenchimento do formulario
+$(document).ready(function () {
+  $("#cnpj").mask("99.999.999/9999-99");
+});
+
+$(document).ready(function () {
+  $("#telefone").mask("(99)9999-9999");
+});
+
+$(document).ready(function () {
+  $("#celular").mask("(99)99999-9999");
+});
+
+$(document).ready(function () {
+  $("#contrato").mask("999999.9999-99");
+});
