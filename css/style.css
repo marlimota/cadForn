@@ -109,6 +109,12 @@ body {
   box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.titleButton {
+  display: flex;
+  margin: 1%;
+  justify-content: flex-end;
+}
+
 .titleButton button {
   background-color: white;
   color: teal;
@@ -174,6 +180,20 @@ body {
 
 .btn-delete:hover {
   box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.hideInput {
+  max-width: 80%;
+  border: none;
+  border-radius: 15px;
+  background-color: transparent;
+  color: rgb(15, 15, 15);
+  cursor: text;
+  outline: none;
+}
+
+.hideInput:hover {
+  border: none;
 }
 
 #pageOverlay {
