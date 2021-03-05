@@ -78,6 +78,7 @@ function Provider(nomeFantasia, razaoSocial, cnpj, telefone, celular, endereco, 
 
   //função para validação dos campos do formulário
   this.IsValid = function () {
+
     if (this.nomeFantasia.length < 3) {
       alert("O nome deve ter pelo menos 3 caracteres!");
       return false;
@@ -102,7 +103,13 @@ function Provider(nomeFantasia, razaoSocial, cnpj, telefone, celular, endereco, 
       return false;
     }
 
-    if (this.email === "") {
+    if (this.celular === "") {
+      alert("Você deve digitar um celular válido!");
+      return false;
+    }
+
+    let regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!regex.test(this.email)) {
       alert("Você deve digitar um e-mail válido!");
       return false;
     }
@@ -119,6 +126,7 @@ function Provider(nomeFantasia, razaoSocial, cnpj, telefone, celular, endereco, 
     return true;
   }
 }
+
 
 function FetchAll() {
   let data = "";
@@ -300,3 +308,69 @@ $(document).ready(function () {
 $(document).ready(function () {
   $("#contrato").mask("999999.9999-99");
 });
+
+//função para validar e-mail
+
+
+//função de busca com jquery
+$(function () {
+  $("#txtBusca").keyup(function () {
+    var texto = $(this).val();
+
+    $("#itens input.value").css("display", "block");
+    $("#itens input.value").each(function () {
+      if ($(this).text().indexOf(texto) < 0)
+        $(this).css("display", "none");
+    });
+  });
+});
+
+function Search(textToSearch) {
+  let newProvidersList = [];
+
+  for (let i = 0; i < providersList.length; i++) {
+    if (this.nomeFantasia.contains(textToSearch)) {
+      newProvidersList.add(providersList[i])
+    }
+    // if (this.razaoSocial.length < 3) {
+    //   alert("A razão social deve ter pelo menos 3 caracteres!");
+    //   return false;
+    // }
+
+    // if (this.cnpj.length < 14) {
+    //   alert("O CNPJ deve ter pelo menos 14 caracteres!");
+    //   return false;
+    // }
+
+    // if (this.endereco.length > 35) {
+    //   alert("O endereço deve ter até 35 caracteres!");
+    //   return false;
+    // }
+
+    // if (this.telefone === "") {
+    //   alert("Você deve digitar um telefone válido!");
+    //   return false;
+    // }
+
+    // if (this.celular === "") {
+    //   alert("Você deve digitar um celular válido!");
+    //   return false;
+    // }
+
+    // let regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    // if (!regex.test(this.email)) {
+    //   alert("Você deve digitar um e-mail válido!");
+    //   return false;
+    // }
+
+    // if (this.produto === "") {
+    //   alert("Você deve digitar um produto!");
+    //   return false;
+    // }
+
+    // if (this.contrato.length < "") {
+    //   alert("Você deve digitar o número do contrato completo!");
+    //   return false;
+    // }
+  }
+}
