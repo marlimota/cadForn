@@ -6,7 +6,7 @@ body {
 }
 
 .barraSuperior {
-  background-image: linear-gradient(135deg, rgb(63, 63, 63),gray);
+  background-image: linear-gradient(135deg, rgb(46, 46, 46),rgb(128, 126, 126));
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -54,7 +54,7 @@ body {
   height: auto;
   margin: 2%;
   background-color: white;
-  word-wrap: break-word !important;
+  word-wrap: break-word !important;/*permite que o texto das colunas quebre*/
   justify-content: center;
 }
 
@@ -68,13 +68,14 @@ body {
 }
 
 .table input, textarea{
-    cursor: text;
+    cursor: text;/*cursor muda para texto quando passa por área editável*/
     border: none;
     background-color: transparent !important;
-    outline: none;
+    outline: none; /*tira a borda preta ao escrever no campo*/
     width: 100%;
 }
 
+/*mudança da cor das tabelas bootstrap*/
 .table-striped>tbody>tr:nth-child(odd)>td, 
 .table-striped>tbody>tr:nth-child(odd)>th {
    background-color:  rgba(180, 228, 228, 0.3); 
@@ -97,12 +98,13 @@ body {
 }
 
 /*botoes*/
-
 /*botão adicinar novo*/
 .btn {
-  border-radius: 10px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-left: 2%;
+  width: 10%;
+  min-width: 150px;
 }
 
 .btn:hover {
@@ -156,18 +158,6 @@ body {
   background-color: #da8d8d;
 }
 
-.btn {
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 30px;
-  margin-left: 2%;
-  width: 10%;
-  min-width: 150px;
-}
-
-.btn:hover {
-  box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
 .btn-delete {
   border-radius: 50%;
   margin-left: 20%; 
@@ -182,26 +172,12 @@ body {
   box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.hideInput {
-  max-width: 80%;
-  border: none;
-  border-radius: 15px;
-  background-color: transparent;
-  color: rgb(15, 15, 15);
-  cursor: text;
-  outline: none;
-  font-weight: bolder;
-}
+/*estilização do placeholder*/
+::-webkit-input-placeholder {color: rgb(170, 170, 170);}
+input:-moz-placeholder { color:rgb(170, 170, 170); }
+textarea:-moz-placeholder { color:rgb(170, 170, 170); }
 
-::-webkit-input-placeholder {color: rgb(189, 190, 190);}
-input:-moz-placeholder { color:rgb(189, 190, 190); }
-textarea:-moz-placeholder { color:rgb(189, 190, 190); }
-
-.hideInput:hover {
-  border: none;
-  color: white;
-}
-
+/*estilização dos ids*/
 #pageOverlay {
   display: none;
   position: absolute; 
@@ -210,29 +186,41 @@ textarea:-moz-placeholder { color:rgb(189, 190, 190); }
   width: 100%;
   height: auto;
   min-height: 100%;
-  z-index: 10;
+  animation: goDown 1s;
+  z-index: 10; /*trás o objeto para a frente na tela - 10 posições a frente*/
   background-color: rgba(0, 0, 0, 0.25);
+}
+
+@keyframes goDown{
+  0% {
+    top: -100%
+  }
+  60%{
+    top: 10%;
+  }
+  80%{
+    top: -5%;
+  }
+  100%{
+    top: 0;
+  }
 }
 
 #details-btn{
   background-color: #B5E4E4;
-  box-shadow: none;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #details-btn:hover {
-  background-color: #B5E4E4;
   box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #edit-btn {
   background-color: #b5d1e4;
-  box-shadow: none;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #edit-btn:hover {
-  background-color: #b5d1e4;
   box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 

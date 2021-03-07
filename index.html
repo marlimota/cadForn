@@ -45,8 +45,6 @@
       <h2>Fornecedores</h2>
       <div class="titleButton">
         <button class="btn" onclick="SetNewProviderScreenVisibility(true)"><i class="fa fa-plus"></i> Adicionar</button>
-        <button class="btn" onclick=""><input class="hideInput" type="text" placeholder=" Buscar"><i
-            class="fa fa-search"></i></button>
       </div>
     </section>
     <section class="providers">
@@ -64,11 +62,13 @@
             </tr>
           </thead>
           <tbody id="providersTable">
+            <!--espaço reservado para a tabela que é criada pela função FetchAll-->
           </tbody>
         </table>
       </div>
     </section>
     <section class="arrows">
+      <!--setas para mudança de página-->
       <div id="numberPage"></div>
       <a id="previewButton" onclick="ChangePage(-1)"><i class="fa fa-chevron-left"></i></a>
       <a id="nextButton" onclick="ChangePage(1)"><i class="fa fa-chevron-right"></i></a>
@@ -76,6 +76,8 @@
   </div>
 
 
+  <!--toda a parte que aparece sobrepondo a tela principal - nova página que aparece acima da anterior 
+  - tabela, botões e "sombra cinza"-->
   <div id="pageOverlay">
     <div class="cadastro">
       <section class="providers" id="overlayWhiteBox">
@@ -83,44 +85,44 @@
           <tr>
             <th>Nome Fantasia</th>
             <td> <input type="text" name="nomeFantasia" id="nomeFantasia" placeholder="Nome Fantasia"
-                autocomplete="none"></td>
+                autocomplete="off"></td>
           </tr>
           <tr>
             <th>Razão Social</th>
-            <td> <input type="text" name="razaoSocial" id="razaoSocial" placeholder="Razão Social" autocomplete="none">
+            <td> <input type="text" name="razaoSocial" id="razaoSocial" placeholder="Razão Social" autocomplete="off">
             </td>
           </tr>
           <tr>
             <th>CNPJ</th>
-            <td> <input type="text" name="cnpj" id="cnpj" placeholder="CNPJ" autocomplete="none"></td>
+            <td> <input type="text" name="cnpj" id="cnpj" placeholder="CNPJ" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Telefone</th>
-            <td> <input type="tel" name="telefone" id="telefone" placeholder="Telefone" autocomplete="none"></td>
+            <td> <input type="tel" name="telefone" id="telefone" placeholder="Telefone" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Celular</th>
-            <td> <input type="tel" name="celular" id="celular" placeholder="Celular" autocomplete="none"></td>
+            <td> <input type="tel" name="celular" id="celular" placeholder="Celular" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Endereço</th>
-            <td> <input type="text" name="endereco" id="endereco" placeholder="Endereço" autocomplete="none"></td>
+            <td> <input type="text" name="endereco" id="endereco" placeholder="Endereço" autocomplete="off"></td>
           </tr>
           <tr>
             <th>E-mail</th>
-            <td> <input type="email" name="email" id="email" placeholder="E-mail" autocomplete="none"></td>
+            <td> <input type="email" name="email" id="email" placeholder="E-mail" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Site</th>
-            <td> <input type="text" name="site" id="site" placeholder="Site" autocomplete="none"></td>
+            <td> <input type="text" name="site" id="site" placeholder="Site" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Produto</th>
-            <td> <input type="text" name="produto" id="produto" placeholder="Produto" autocomplete="none"></td>
+            <td> <input type="text" name="produto" id="produto" placeholder="Produto" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Contrato</th>
-            <td> <input type="text" name="contrato" id="contrato" placeholder="Contrato" autocomplete="none"></td>
+            <td> <input type="text" name="contrato" id="contrato" placeholder="Contrato" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Observação</th>
