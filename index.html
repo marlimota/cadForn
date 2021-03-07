@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <!--Links jquery-->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
   <script src="js/jquery-1.2.6.pack.js" type="text/javascript"></script>
   <script src="js/jquery.maskedinput-1.1.4.pack.js" type="text/javascript" />
   </script>
@@ -62,11 +63,13 @@
             </tr>
           </thead>
           <tbody id="providersTable">
+            <!--espaço reservado para a tabela que é criada pela função FetchAll-->
           </tbody>
         </table>
       </div>
     </section>
     <section class="arrows">
+      <!--setas para mudança de página-->
       <div id="numberPage"></div>
       <a id="previewButton" onclick="ChangePage(-1)"><i class="fa fa-chevron-left"></i></a>
       <a id="nextButton" onclick="ChangePage(1)"><i class="fa fa-chevron-right"></i></a>
@@ -74,53 +77,58 @@
   </div>
 
 
+  <!--toda a parte que aparece sobrepondo a tela principal - nova página que aparece acima da anterior 
+  - tabela, botões e "sombra cinza"-->
   <div id="pageOverlay">
     <div class="cadastro">
       <section class="providers" id="overlayWhiteBox">
-        <table class="table table-striped">
+        <table id="itens" class="table table-striped">
           <tr>
             <th>Nome Fantasia</th>
-            <td> <input type="text" name="nomeFantasia" id="nomeFantasia" placeholder="Nome Fantasia"></td>
+            <td> <input type="text" name="nomeFantasia" id="nomeFantasia" placeholder="Nome Fantasia"
+                autocomplete="off"></td>
           </tr>
           <tr>
             <th>Razão Social</th>
-            <td> <input type="text" name="razaoSocial" id="razaoSocial" placeholder="Razão Social"></td>
+            <td> <input type="text" name="razaoSocial" id="razaoSocial" placeholder="Razão Social" autocomplete="off">
+            </td>
           </tr>
           <tr>
             <th>CNPJ</th>
-            <td> <input type="text" name="cnpj" id="cnpj" placeholder="CNPJ"></td>
+            <td> <input type="text" name="cnpj" id="cnpj" placeholder="CNPJ" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Telefone</th>
-            <td> <input type="tel" name="telefone" id="telefone" placeholder="Telefone"></td>
+            <td> <input type="tel" name="telefone" id="telefone" placeholder="Telefone" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Celular</th>
-            <td> <input type="tel" name="celular" id="celular" placeholder="Celular"></td>
+            <td> <input type="tel" name="celular" id="celular" placeholder="Celular" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Endereço</th>
-            <td> <input type="text" name="endereco" id="endereco" placeholder="Endereço"></td>
+            <td> <input type="text" name="endereco" id="endereco" placeholder="Endereço" autocomplete="off"></td>
           </tr>
           <tr>
             <th>E-mail</th>
-            <td> <input type="email" name="email" id="email" placeholder="E-mail"></td>
+            <td> <input type="email" name="email" id="email" placeholder="E-mail" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Site</th>
-            <td> <input type="text" name="site" id="site" placeholder="Site"></td>
+            <td> <input type="text" name="site" id="site" placeholder="Site" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Produto</th>
-            <td> <input type="text" name="produto" id="produto" placeholder="Produto"></td>
+            <td> <input type="text" name="produto" id="produto" placeholder="Produto" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Contrato</th>
-            <td> <input type="text" name="contrato" id="contrato" placeholder="Contrato"></td>
+            <td> <input type="text" name="contrato" id="contrato" placeholder="Contrato" autocomplete="off"></td>
           </tr>
           <tr>
             <th>Observação</th>
-            <td> <textarea type="text" name="observacao" id="observacao" placeholder="Observação"> </textarea> </td>
+            <td> <textarea type="text" name="observacao" id="observacao" placeholder="Observação"
+                autocomplete="none"> </textarea> </td>
           </tr>
         </table>
       </section>

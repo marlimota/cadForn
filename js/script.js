@@ -1,13 +1,14 @@
-let providersList = [];
+let providersList = []; // array que recebe a lista de fornecedores - todo novo fornecedor é adicionado a lista
 
 //document.getElementById("pageOverlay") //seleciona um elemento do html
 let pageOverlay = document.getElementById("pageOverlay"); //salva o elemento do html em uma variável
 
-let providersTable = document.getElementById("providersTable")
+let providersTable = document.getElementById("providersTable") //onde a tablea vai ser desenhada no html
 
 let itemsByPage = 4;
 let pageNumber = 0;
 
+//instância do objeto Provider que fica fixa
 let defaultProvider = new Provider(
   "Marli",
   "Mota",
@@ -21,12 +22,11 @@ let defaultProvider = new Provider(
   "000000.0000-01"
 );
 
-
 providersList.push(defaultProvider);
 
-FetchAll();
+FetchAll(); //atualiza a lista na tela
 
-//função que mostra/esconde a tela 
+//função que mostra/esconde a tela de Overlay
 function SetPageOverlayVisibility(visible) {
   pageOverlay.style.display = visible ? "block" : "none";
   // if (visible) {
@@ -55,14 +55,13 @@ function SetPageOverlayVisibility(visible) {
   }
 }
 
-//mosta/esconde os botões 
+//mosta/esconde os botões e toda a tela de adicionar  
 function SetNewProviderScreenVisibility(visible) {
   SetPageOverlayVisibility(visible);
   addProviderButtonBox.style.display = visible ? "flex" : "none";
 }
 
-//função para salvar dados do fornecedor e mostrar 
-
+//construtor do objeto Provider - contém todos os atributos que o fornecedor deve ter e o método que verifica se é válido
 function Provider(nomeFantasia, razaoSocial, cnpj, telefone, celular, endereco, email, site, produto, contrato, observacao = "") {
   this.nomeFantasia = nomeFantasia;
   this.razaoSocial = razaoSocial;
@@ -78,6 +77,7 @@ function Provider(nomeFantasia, razaoSocial, cnpj, telefone, celular, endereco, 
 
   //função para validação dos campos do formulário
   this.IsValid = function () {
+
     if (this.nomeFantasia.length < 3) {
       alert("O nome deve ter pelo menos 3 caracteres!");
       return false;
@@ -102,7 +102,14 @@ function Provider(nomeFantasia, razaoSocial, cnpj, telefone, celular, endereco, 
       return false;
     }
 
-    if (this.email === "") {
+    if (this.celular === "") {
+      alert("Você deve digitar um celular válido!");
+      return false;
+    }
+
+    //regex: lógica para padrões
+    let regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!regex.test(this.email)) {
       alert("Você deve digitar um e-mail válido!");
       return false;
     }
@@ -120,18 +127,25 @@ function Provider(nomeFantasia, razaoSocial, cnpj, telefone, celular, endereco, 
   }
 }
 
+//função que desenha a tabela na tela
 function FetchAll() {
-  let data = "";
+  let data = ""; //variavel que armeza o código html gerado no js e que no futuro será enviado para dentro do elemento providersTable
 
   //contador de páginas
-  document.getElementById("numberPage").innerHTML = ("página " + (pageNumber + 1) + " de " + Math.ceil(providersList.length / itemsByPage));
+  let numberOfPages = Math.ceil(providersList.length / itemsByPage);
 
+  numberOfPages = numberOfPages > 0 ? numberOfPages : 1;
+
+  document.getElementById("numberPage").innerHTML = ("página " + (pageNumber + 1) + " de " + numberOfPages);
+  //se tiver pelo menos um fornecedor
   if (providersList.length > 0) {
+    //executa de acordo com a quantidade de fornecedores por página
     for (let i = 0; i < itemsByPage; i++) {
+      //interrompe a função assim que todos os fornecedores da página atual forem adicionados a tabela, mesmo que não tenha atingido o máximo de  fornecedores por páginas
       if (providersList.length <= pageNumber * itemsByPage + i) {
         return providersTable.innerHTML = data;
       }
-
+      //construção da tabela html
       data += '<tr>';
       data += '<td style="width:9%">' + providersList[pageNumber * itemsByPage + i].nomeFantasia + '</td>';
       data += '<td style="width:9%">' + providersList[pageNumber * itemsByPage + i].razaoSocial + '</td>';
@@ -169,11 +183,6 @@ function SaveNewProvider() {
     providersList.push(currentProvider);
     FetchAll();
     SetPageOverlayVisibility(false);
-  } else {
-    //TODO remover da versão final
-    providersList.push(defaultProvider);
-    FetchAll();
-    SetPageOverlayVisibility(false);
   }
 }
 
@@ -182,6 +191,7 @@ function DeleteProvider(providerIndex) {
   if (window.confirm("Atenção! Isso vai excluir todos os dados do fornecedor. Deseja continuar?")) {
     providersList.splice(providerIndex, 1);
   }
+  //verifica se todos os fornecedores acabaram, em caso positivi, volta uma página
   if (pageNumber >= Math.ceil(providersList.length / itemsByPage)) {
     ChangePage(-1);
   }
@@ -190,24 +200,26 @@ function DeleteProvider(providerIndex) {
 
 //função detalhes 
 function ShowProviderDetails(providerIndex) {
-  ShowOverlay(providerIndex);
-  SetPageOverlayVisibility(true);
-  SetReadOnly(true);
+  FillOverlay(providerIndex);//preenche os campos do overlay com os dados do fornecedor escolhido
+  SetPageOverlayVisibility(true);//deixa visível o overlay
+  SetReadOnly(true);//bloqueia a edição dos dados
 
-  document.getElementById("detailsButtonBox").style.display = "flex";
+  document.getElementById("detailsButtonBox").style.display = "flex";//exibe os botões relacionados 
 }
 
 //função editar
 function EditProvider(providerIndex) {
-  ShowOverlay(providerIndex);
+  FillOverlay(providerIndex);
   SetPageOverlayVisibility(true);
   SetReadOnly(false);
 
-  document.getElementById("editButtonBox").style.display = "flex";
+  document.getElementById("editButtonBox").style.display = "flex";//exibe os botões relacionados
+  //configura o botão de confirmar edição para salvar os novos dados 
   document.getElementById("edit-confirm-btn").setAttribute("onClick", "javascript: SaveEditedFornecedor(" + providerIndex + ");");
 }
 
-function ShowOverlay(providerIndex) {
+//preenche os campos do overlay com os dados do fornecedor escolhido
+function FillOverlay(providerIndex) {
   let selectedProvider = providersList[providerIndex];
   document.getElementById("nomeFantasia").value = selectedProvider.nomeFantasia;
   document.getElementById('razaoSocial').value = selectedProvider.razaoSocial;
@@ -222,6 +234,7 @@ function ShowOverlay(providerIndex) {
   document.getElementById('observacao').value = selectedProvider.observacao;
 }
 
+//
 SaveEditedFornecedor = function (providerIndex) {
   if (!window.confirm("Atenção! Isso pode alterar os dados do fornecedor. Deseja continuar?")) {
     return;
@@ -279,6 +292,7 @@ SetReadOnly = function (value) {
 
 //função imprimir detalhes
 function Print() {
+  //para botões não aparecerem na impressão
   document.getElementById("detailsButtonBox").style.display = "none";
   window.print();
   document.getElementById("detailsButtonBox").style.display = "flex";
