@@ -8,7 +8,7 @@ let providersTable = document.getElementById("providersTable") //onde a tablea v
 let itemsByPage = 4;
 let pageNumber = 0;
 
-//instância do objeto Provider que fica fixa
+//instância do objeto Provider que fica fixa na página principal
 let defaultProvider = new Provider(
   "Marli",
   "Mota",
@@ -92,8 +92,8 @@ function Provider(nomeFantasia, razaoSocial, cnpj, telefone, celular, endereco, 
       return false;
     }
 
-    if (this.endereco.length > 35) {
-      alert("O endereço deve ter até 35 caracteres!");
+    if (this.endereco.length < 20) {
+      alert("O endereço deve ter pelo menos 20 caracteres!");
       return false;
     }
 
@@ -183,7 +183,11 @@ function SaveNewProvider() {
     providersList.push(currentProvider);
     FetchAll();
     SetPageOverlayVisibility(false);
-  }
+  }// else {
+  //   providersList.push(defaultProvider);
+  //   FetchAll();
+  //   SetPageOverlayVisibility(false);
+  // }
 }
 
 //função excluir
@@ -234,7 +238,7 @@ function FillOverlay(providerIndex) {
   document.getElementById('observacao').value = selectedProvider.observacao;
 }
 
-//
+
 SaveEditedFornecedor = function (providerIndex) {
   if (!window.confirm("Atenção! Isso pode alterar os dados do fornecedor. Deseja continuar?")) {
     return;

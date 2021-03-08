@@ -191,21 +191,6 @@ textarea:-moz-placeholder { color:rgb(170, 170, 170); }
   background-color: rgba(0, 0, 0, 0.25);
 }
 
-@keyframes goDown{
-  0% {
-    top: -100%
-  }
-  60%{
-    top: 10%;
-  }
-  80%{
-    top: -5%;
-  }
-  100%{
-    top: 0;
-  }
-}
-
 #details-btn{
   background-color: #B5E4E4;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -229,5 +214,20 @@ textarea:-moz-placeholder { color:rgb(170, 170, 170); }
   padding: 5px;
 }
 
+/*Efeito pageoverlay*/
+@keyframes goDown{
+  0% {
+    top: -100%
+  }
+  60%{
+    top: 10%;
+  }
+  80%{
+    top: -5%;
+  }
+  100%{
+    top: 0;
+  }
+}
 
 /*Responsividade*/
